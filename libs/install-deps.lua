@@ -60,10 +60,11 @@ local function toDb(db, rootHash, deps, nativeOnly)
   return db.saveAs("tree", tree)
 end
 
-local function toFs(db, fs, rootPath, deps, nativeOnly)
+local function toFs(db, fs, rootPath, deps, nativeOnly, dist)
+  dist = dist or "deps"
   for alias, meta in pairs(deps) do
     if meta.hash then
-      local path = pathJoin(rootPath, "deps", alias)
+      local path = pathJoin(rootPath, dist, alias)
       local hash = meta.hash
       if meta.kind == "blob" then
         path = path .. ".lua"

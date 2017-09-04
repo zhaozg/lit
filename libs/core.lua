@@ -525,21 +525,21 @@ local function makeCore(config)
     error("Not a file or valid url: " .. fullUrl)
   end
 
-  function core.installList(path, newDeps)
+  function core.installList(path, newDeps, dist)
     local deps = getInstalled(gfs, path)
     calculateDeps(core.db, deps, newDeps)
-    installDepsFs(core.db, gfs, path, deps, true)
+    installDepsFs(core.db, gfs, path, deps, true, dist)
     return deps
   end
 
-  function core.installDeps(path)
+  function core.installDeps(path, dist)
     -- bubble up errors in package
     local meta = assert(pkg.query(gfs, path))
     if not meta.dependencies then
       log("no dependencies", path)
       return
     end
-    return core.installList(path, meta.dependencies)
+    return core.installList(path, meta.dependencies, dist)
   end
 
   function core.sync(mainAuthor, mainName)
