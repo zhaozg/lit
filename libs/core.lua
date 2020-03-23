@@ -228,6 +228,10 @@ local function makeCore(config)
       end
     end
 
+    if os.getenv('LUVI') then
+      return os.getenv('LUVI')
+    end
+
     -- Otherwise download it fresh
     log("downloading", url)
     local head, body = request("GET", url)

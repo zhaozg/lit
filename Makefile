@@ -1,14 +1,11 @@
 APP_FILES=$(shell find . -name '*.lua')
-LUVI_ARCH=$(shell uname -s)_$(shell uname -m)
+LUVI_ARCH=$(shell uname -s)-$(shell uname -m)
 LUVI_VERSION=2.9.3
-LUVI_URL=https://github.com/luvit/luvi/releases/download/v$(LUVI_VERSION)/luvi-regular-$(LUVI_ARCH)
+LUVI_URL=$(HOME)/work/release/luvi/luvi-$(LUVI_ARCH)
 
-lit: luvi $(APP_FILES)
-	./luvi . -- make . lit ./luvi
-
-luvi:
-	curl -L $(LUVI_URL) > luvi
-	chmod +x luvi
+lit: $(APP_FILES)
+	echo $(LUVI_URL)
+	$(LUVI_URL) . -- make . lit $(LUVI_URL)
 
 test: lit
 	tests/run.sh
