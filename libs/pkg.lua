@@ -31,7 +31,7 @@ local isFile = require('git').modes.isFile
 local semver = require('semver')
 local pathJoin = require('luvi').path.join
 local listToMap = require('git').listToMap
-local jsonParse = require('json').parse
+local jsonParse = require('json').decode
 
 local function evalModule(data, name)
   -- Match multiline lua comments that start with `lit-meta`
@@ -134,6 +134,10 @@ local function queryDb(db, hash)
     hash = value.object
 
     -- Use metata data in tag message if found
+    local _ = value.message:find('\n')
+    if _ then
+      value.message = string.sub(value.message, 1, _)
+    end
     local meta = jsonParse(value.message)
     if meta then
       return meta, value.type, hash

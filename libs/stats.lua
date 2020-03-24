@@ -1,4 +1,4 @@
-local jsonStringify = require('json').stringify
+local jsonStringify = require('json').encode
 local uv = require('uv')
 local scandir = require('coro-fs').scandir
 local ffi = require('ffi')

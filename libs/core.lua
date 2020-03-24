@@ -28,7 +28,7 @@ core.add(path) -> author, name, version, hash - Import a package complete with s
 
 local uv = require('uv')
 local pathJoin = require('luvi').path.join
-local jsonStringify = require('json').stringify
+local jsonStringify = require('json').encode
 local log = require('log').log
 local githubQuery = require('github-request')
 local pkg = require('pkg')

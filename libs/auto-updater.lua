@@ -18,7 +18,7 @@ limitations under the License.
 
 local request = require('coro-http').request
 local semver = require('semver')
-local jsonParse = require('json').parse
+local jsonParse = require('json').decode
 local log = require('log').log
 local prompt = require('prompt')(require('pretty-print'))
 local makeCore = require('core')

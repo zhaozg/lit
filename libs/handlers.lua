@@ -20,7 +20,7 @@ local log = require('log').log
 local git = require('git')
 local digest = require('openssl').digest.digest
 local githubQuery = require('github-request')
-local jsonParse = require('json').parse
+local jsonParse = require('json').decode
 local verifySignature = require('verify-signature')
 
 local function split(line)

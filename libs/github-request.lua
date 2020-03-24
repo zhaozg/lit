@@ -18,7 +18,7 @@ limitations under the License.
 
 local env = require('env')
 local log = require('log').log
-local jsonParse = require('json').parse
+local jsonParse = require('json').decode
 local http = require('coro-http')
 
 return function (path, etag)

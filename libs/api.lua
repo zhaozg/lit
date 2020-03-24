@@ -73,8 +73,8 @@ GET /metrics -> json of currently exposed metrics
 ]]
 
 local pathJoin = require('luvi').path.join
-local jsonStringify = require('json').stringify
-local jsonParse = require('json').parse
+local jsonStringify = require('json').encode
+local jsonParse = require('json').decode
 local modes = require('git').modes
 local exportZip = require('export-zip')
 local calculateHistoricDeps = require('calculate-historic-deps')

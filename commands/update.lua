@@ -6,7 +6,7 @@ return function ()
   local exec = require('exec')
   local request = require('coro-http').request
   local semver = require('semver')
-  local jsonParse = require('json').parse
+  local jsonParse = require('json').decode
   local fs = require('coro-fs')
   local spawn = require('coro-spawn')
   local updater = require('auto-updater')
