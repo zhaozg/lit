@@ -40,10 +40,13 @@ return function (fs, rootPath)
         path = pathJoin(dir, entry.name)
         meta, path = pkgQuery(fs, path)
         if meta then
+          local alias = meta.name:match("^[^/]+/(.+)$")
+          baseName = baseName:gsub('%-', '%%-')
+          assert(alias:match(baseName..'$'))
           meta.fs = fs
           meta.path = path
           meta.location = dir:match("[^/]+$")
-          deps[baseName] = meta
+          deps[alias] = meta
         end
       end
     end

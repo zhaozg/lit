@@ -34,7 +34,7 @@ return function (db, deps, newDeps)
         version = nil
       end
       if type(alias) == "number" then
-        alias = name:match("([^/]+)$")
+        alias = name:match("^[^/]+/(.+)$")
       end
       if not name:find("/") then
         error("Package names must include owner/name at a minimum")
