@@ -22,7 +22,8 @@ local colorize = pp.colorize
 local exports = {}
 exports.stream = pp.stdout
 function exports.log(key, value, color)
-  exports.stream:write(key .. ": " .. (color and colorize(color, value) or value) .. "\n")
+  --exports.stream:write(key .. ": " .. (color and colorize(color, value) or value) .. "\n")
+  print(key .. ": " .. (color and colorize(color, value) or value))
 end
 
 return exports
