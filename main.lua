@@ -115,7 +115,7 @@ function commandLine.exitWithCode(exitCode)
     end
   end)
   uv.run()
-  return os.exit(exitCode)
+  return os.exit(exitCode, true)
 end
 
 function commandLine.isValidCommand(commandHandler)
